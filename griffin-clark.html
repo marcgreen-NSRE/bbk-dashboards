@@ -3,199 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Griffin Clark — BuiltByKlaw Dashboard</title>
+<title>X-Factor Group — BuiltByKlaw</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; padding: 20px; }
-  h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-  .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
-  .brief-box { background: #1a1d27; border-radius: 12px; padding: 18px; margin-bottom: 24px; border-left: 3px solid #9b5de5; }
-  .brief-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #9b5de5; margin-bottom: 10px; }
-  .brief-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; font-size: 13px; color: #ccc; }
-  .brief-icon { font-size: 14px; flex-shrink: 0; }
-  .section-header { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 12px; margin-top: 28px; }
-  .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-  .goal-card { background: #1a1d27; border-radius: 10px; padding: 14px 16px; border-left: 3px solid #9b5de5; }
-  .goal-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-  .goal-value { font-size: 24px; font-weight: 700; color: #fff; }
-  .goal-sub { font-size: 11px; color: #555; margin-top: 3px; }
-  .progress-bar { background: #2a2d3a; border-radius: 4px; height: 4px; margin-top: 8px; overflow: hidden; }
-  .progress-fill { height: 100%; border-radius: 4px; background: #9b5de5; }
-  .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-  .event-card { background: #1a1d27; border-radius: 12px; padding: 18px; border-top: 3px solid #444; }
-  .event-card.purple { border-top-color: #9b5de5; }
-  .event-card.green { border-top-color: #52b788; }
-  .event-card.yellow { border-top-color: #e9c46a; }
-  .event-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .event-name { font-size: 15px; font-weight: 700; color: #fff; }
-  .event-type { font-size: 11px; color: #666; margin-top: 2px; }
-  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
-  .badge-purple { background: #2d1a4b; color: #9b5de5; }
-  .badge-green { background: #1b4332; color: #52b788; }
-  .badge-yellow { background: #3d2c00; color: #e9c46a; }
-  .milestones { margin-bottom: 10px; }
-  .milestone { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .dot-done { background: #52b788; }
-  .dot-pending { background: #e9c46a; }
-  .dot-na { background: #333; }
-  .milestone-label { color: #999; }
-  .milestone-label.done { color: #52b788; text-decoration: line-through; }
-  .next-action { background: #12151f; border-left: 2px solid #9b5de5; padding: 8px 10px; border-radius: 4px; font-size: 12px; color: #9b5de5; margin-top: 8px; }
-  .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-  .partner-card { background: #1a1d27; border-radius: 10px; padding: 14px; }
-  .partner-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
-  .partner-meta { font-size: 11px; color: #666; margin-bottom: 8px; }
-  .partner-last { font-size: 11px; }
-  .last-ok { color: #52b788; }
-  .last-warn { color: #e9c46a; }
-  .last-late { color: #e76f51; }
-  .bbk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-  .bbk-card { background: #1a1d27; border-radius: 10px; padding: 14px; border-left: 3px solid #48cae4; }
-  .bbk-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
-  .bbk-meta { font-size: 11px; color: #666; margin-bottom: 6px; }
-  .bbk-status { font-size: 11px; color: #48cae4; font-weight: 600; }
-  .updated { font-size: 11px; color: #444; text-align: right; margin-top: 24px; }
-  .ai-tag { display: inline-block; background: #2d1a4b; color: #9b5de5; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+/* BBK SHARED STYLE — matches builtbyklaw.com */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f0f1a;--bg2:#1a1a2e;--card:#1e1e32;
+  --accent:#ff4500;--accent2:#ff6b35;
+  --white:#ffffff;--gray:#a0a0b0;--border:#2a2a3e;
+  --green:#2d6a4f;--green2:#52b788;
+  --yellow:#e9c46a;--red:#e76f51;--blue:#48cae4;
+}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--white);padding:24px;line-height:1.5;}
+h1{font-size:24px;font-weight:800;color:#fff;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--gray);margin-bottom:28px;}
+.ai-tag{display:inline-block;background:rgba(255,69,0,0.15);border:1px solid rgba(255,69,0,0.4);color:var(--accent);font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;letter-spacing:0.05em;margin-left:8px;vertical-align:middle;}
+/* BRIEF */
+.brief-box{background:var(--card);border-radius:12px;padding:20px;margin-bottom:28px;border-left:3px solid var(--accent);}
+.brief-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;font-weight:700;}
+.brief-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-size:13px;color:#ccc;}
+/* ALERT */
+.alert-box{background:#1a0f0a;border:1px solid var(--red);border-radius:12px;padding:16px 20px;margin-bottom:20px;}
+.alert-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:10px;font-weight:700;}
+.alert-item{display:flex;gap:8px;font-size:13px;color:#e9a88f;margin-bottom:6px;}
+/* SECTION */
+.section-header{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#444;margin-bottom:14px;margin-top:32px;font-weight:700;}
+/* GOALS */
+.goals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+.goal-card{background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--accent);}
+.goal-label{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;font-weight:600;}
+.goal-value{font-size:26px;font-weight:800;color:#fff;}
+.goal-sub{font-size:11px;color:#555;margin-top:3px;}
+.progress-bar{background:#1a1a2e;border-radius:4px;height:3px;margin-top:10px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:4px;background:var(--accent);}
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;}
+.card{background:var(--card);border-radius:12px;padding:20px;border-top:3px solid #333;}
+.card.accent{border-top-color:var(--accent);}
+.card.green{border-top-color:var(--green2);}
+.card.yellow{border-top-color:var(--yellow);}
+.card.red{border-top-color:var(--red);}
+.card.blue{border-top-color:var(--blue);}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.card-name{font-size:15px;font-weight:700;color:#fff;}
+.card-meta{font-size:11px;color:var(--gray);margin-top:2px;}
+.badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;}
+.badge-accent{background:rgba(255,69,0,0.15);color:var(--accent);}
+.badge-green{background:#1b4332;color:var(--green2);}
+.badge-yellow{background:#3d2c00;color:var(--yellow);}
+.badge-red{background:#3d1a0f;color:var(--red);}
+.badge-blue{background:#1b3a4b;color:var(--blue);}
+/* MILESTONES */
+.milestones{margin:12px 0;}
+.milestone{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:12px;}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.dot-done{background:var(--green2);}
+.dot-pending{background:var(--yellow);}
+.dot-alert{background:var(--red);}
+.dot-na{background:#2a2a3e;}
+.ml{color:#888;}
+.ml.done{color:var(--green2);text-decoration:line-through;}
+.ml.hot{color:var(--red);font-weight:600;}
+/* NEXT ACTION */
+.next{background:#0f0f1a;border-left:2px solid var(--accent);padding:8px 12px;border-radius:4px;font-size:12px;color:var(--accent);margin-top:10px;}
+.next.warn{border-color:var(--yellow);color:var(--yellow);}
+.next.hot{border-color:var(--red);color:var(--red);}
+.next.ok{border-color:var(--green2);color:var(--green2);}
+/* SMALL CARDS */
+.small-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+.small-card{background:var(--card);border-radius:10px;padding:14px;}
+.sc-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;}
+.sc-meta{font-size:11px;color:var(--gray);margin-bottom:8px;}
+.sc-status{font-size:12px;font-weight:600;}
+.ok{color:var(--green2);}
+.warn{color:var(--yellow);}
+.late{color:var(--red);}
+.updated{font-size:11px;color:#333;text-align:right;margin-top:28px;border-top:1px solid #1a1a2e;padding-top:12px;}
 </style>
 </head>
 <body>
 
-<h1>⚡ X-Factor Group Dashboard</h1>
-<p class="subtitle">Griffin Clark · X-Factor Group · Powered by BuiltByKlaw <span class="ai-tag">AI ACTIVE</span></p>
+<h1>⚡ X-Factor Group</h1>
+<p class="subtitle">Griffin Clark · Events & Community · <span class="ai-tag">AI ACTIVE</span></p>
 
-<!-- MORNING BRIEF -->
 <div class="brief-box">
   <div class="brief-title">☀️ Morning Brief — Monday Apr 28</div>
-  <div class="brief-row"><span class="brief-icon">🎟️</span>People Connecting Program — 3 weeks out — 34 registered, 12 follow-ups pending</div>
-  <div class="brief-row"><span class="brief-icon">🤝</span>2 partnership conversations need a touch — drafts ready</div>
-  <div class="brief-row"><span class="brief-icon">💼</span>3 BBK leads sourced through X-Factor — flagged to Marc</div>
-  <div class="brief-row"><span class="brief-icon">✅</span>5 new X-Factor members onboarded this week — welcome sequences sent automatically</div>
-  <div class="brief-row"><span class="brief-icon">📅</span>Sponsor call — Elevate Wellness 2pm · BBK strategy call with Marc 4pm</div>
+  <div class="brief-row"><span>🎟️</span>People Connecting Program — May 20 · 34 registered · 12 follow-ups drafted and ready</div>
+  <div class="brief-row"><span>🤝</span>2 partnership conversations need a touch today — drafts ready</div>
+  <div class="brief-row"><span>💼</span>3 BBK leads sourced through X-Factor — flagged to Marc</div>
+  <div class="brief-row"><span>✅</span>5 new X-Factor members this week — welcome sequences sent automatically</div>
+  <div class="brief-row"><span>⏰</span>Your relationships are working while you sleep. The system never forgets.</div>
 </div>
 
-<!-- METRICS -->
 <div class="section-header">Pipeline Overview</div>
 <div class="goals-grid">
   <div class="goal-card">
-    <div class="goal-label">Events — YTD</div>
+    <div class="goal-label">Events YTD</div>
     <div class="goal-value">4</div>
     <div class="goal-sub">Next: May 20</div>
     <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
   </div>
-  <div class="goal-card" style="border-left-color:#52b788">
+  <div class="goal-card" style="border-left-color:var(--green2)">
     <div class="goal-label">X-Factor Members</div>
     <div class="goal-value">127</div>
     <div class="goal-sub">+18 this month</div>
-    <div class="progress-bar"><div class="progress-fill" style="background:#52b788;width:85%"></div></div>
+    <div class="progress-bar"><div class="progress-fill" style="background:var(--green2);width:85%"></div></div>
   </div>
-  <div class="goal-card" style="border-left-color:#48cae4">
+  <div class="goal-card" style="border-left-color:var(--blue)">
     <div class="goal-label">BBK Leads Sourced</div>
     <div class="goal-value">3</div>
     <div class="goal-sub">Flagged to Marc</div>
-    <div class="progress-bar"><div class="progress-fill" style="background:#48cae4;width:100%"></div></div>
+    <div class="progress-bar"><div class="progress-fill" style="background:var(--blue);width:100%"></div></div>
   </div>
-  <div class="goal-card" style="border-left-color:#e9c46a">
-    <div class="goal-label">Partners — Active</div>
+  <div class="goal-card" style="border-left-color:var(--yellow)">
+    <div class="goal-label">Active Partners</div>
     <div class="goal-value">8</div>
-    <div class="goal-sub">2 need touchpoint</div>
-    <div class="progress-bar"><div class="progress-fill" style="background:#e9c46a;width:75%"></div></div>
+    <div class="goal-sub">2 need a touch</div>
+    <div class="progress-bar"><div class="progress-fill" style="background:var(--yellow);width:75%"></div></div>
   </div>
 </div>
 
-<!-- EVENTS -->
 <div class="section-header">Event Pipeline</div>
-<div class="event-grid">
-
-  <div class="event-card purple">
-    <div class="event-header">
-      <div><div class="event-name">People Connecting Program</div><div class="event-type">Networking Event · May 20, 2026</div></div>
-      <span class="badge badge-purple">Active</span>
+<div class="card-grid">
+  <div class="card accent">
+    <div class="card-header">
+      <div><div class="card-name">People Connecting Program</div><div class="card-meta">Networking · May 20, 2026 · Boston Harbor Hotel</div></div>
+      <span class="badge badge-accent">Active</span>
     </div>
     <div class="milestones">
-      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Venue confirmed — Boston Harbor Hotel</span></div>
-      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">34 registrations — target 60</span></div>
-      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">12 pending follow-ups — drafts ready</span></div>
-      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Sponsor confirmation — 2 remaining</span></div>
-      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Post-event outreach sequence</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="ml done">Venue confirmed</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="ml done">34 registrations — target 60</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="ml">12 pending follow-ups — drafts ready</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="ml">2 sponsor confirmations outstanding</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="ml" style="color:#333">Post-event outreach sequence</span></div>
     </div>
-    <div class="next-action">AI drafted: 12 follow-up emails ready · Sponsor reminder drafted</div>
+    <div class="next">12 follow-up emails ready · Sponsor reminder drafted</div>
   </div>
 
-  <div class="event-card green">
-    <div class="event-header">
-      <div><div class="event-name">Elevate Wellness Summit</div><div class="event-type">Partnership Event · Jun 12, 2026</div></div>
+  <div class="card green">
+    <div class="card-header">
+      <div><div class="card-name">Elevate Wellness Summit</div><div class="card-meta">Partnership Event · Jun 12, 2026</div></div>
       <span class="badge badge-green">Planning</span>
     </div>
     <div class="milestones">
-      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Partnership agreement signed</span></div>
-      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Speaker lineup — 3 of 5 confirmed</span></div>
-      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Registration opens May 1</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="ml done">Partnership agreement signed</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="ml">Speaker lineup — 3 of 5 confirmed</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="ml" style="color:#333">Registration opens May 1</span></div>
     </div>
-    <div class="next-action">Speaker outreach drafted for remaining 2 spots</div>
+    <div class="next ok">Speaker outreach drafted for remaining 2 spots</div>
   </div>
 
-  <div class="event-card yellow">
-    <div class="event-header">
-      <div><div class="event-name">Q3 Leadership Dinner</div><div class="event-type">Intimate Event · Jul 2026</div></div>
+  <div class="card yellow">
+    <div class="card-header">
+      <div><div class="card-name">Q3 Leadership Dinner</div><div class="card-meta">Intimate Event · Jul 2026 · 20 curated invites</div></div>
       <span class="badge badge-yellow">Early Stage</span>
     </div>
     <div class="milestones">
-      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Concept approved</span></div>
-      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Venue research — AI pulled 4 options</span></div>
-      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Guest list — 20 curated invites</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="ml done">Concept approved</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="ml">Venue — AI pulled 4 options for review</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="ml" style="color:#333">Guest list</span></div>
     </div>
-    <div class="next-action">Venue comparison ready for your review</div>
+    <div class="next warn">Venue comparison ready — your call</div>
   </div>
-
 </div>
 
-<!-- BBK LEADS -->
 <div class="section-header">BBK Leads — Sourced Through X-Factor</div>
-<div class="bbk-grid">
-  <div class="bbk-card">
-    <div class="bbk-name">Sarah Mitchell</div>
-    <div class="bbk-meta">RE Agent · Keller Williams · PCP Attendee</div>
-    <div class="bbk-status">→ Flagged to Marc · Apr 26</div>
+<div class="small-grid">
+  <div class="small-card" style="border-left:3px solid var(--blue)">
+    <div class="sc-name">Sarah Mitchell</div>
+    <div class="sc-meta">RE Agent · Keller Williams · PCP Attendee</div>
+    <div class="sc-status" style="color:var(--blue)">→ Flagged to Marc · Apr 26</div>
   </div>
-  <div class="bbk-card">
-    <div class="bbk-name">David Park</div>
-    <div class="bbk-meta">Mortgage Broker · Independent · X-Factor Member</div>
-    <div class="bbk-status">→ Flagged to Marc · Apr 27</div>
+  <div class="small-card" style="border-left:3px solid var(--blue)">
+    <div class="sc-name">David Park</div>
+    <div class="sc-meta">Mortgage Broker · X-Factor Member</div>
+    <div class="sc-status" style="color:var(--blue)">→ Flagged to Marc · Apr 27</div>
   </div>
-  <div class="bbk-card">
-    <div class="bbk-name">Jennifer Russo</div>
-    <div class="bbk-meta">Insurance Agency Owner · PCP Sponsor</div>
-    <div class="bbk-status">→ Flagged to Marc · Apr 28</div>
+  <div class="small-card" style="border-left:3px solid var(--blue)">
+    <div class="sc-name">Jennifer Russo</div>
+    <div class="sc-meta">Insurance Agency · PCP Sponsor</div>
+    <div class="sc-status" style="color:var(--blue)">→ Flagged to Marc · Apr 28</div>
   </div>
 </div>
 
-<!-- PARTNERS -->
 <div class="section-header">Partnership Touchpoints</div>
-<div class="partner-grid">
-  <div class="partner-card">
-    <div class="partner-name">Elevate Wellness</div>
-    <div class="partner-meta">Event Partner · Jun 12 collaboration</div>
-    <div class="partner-last last-ok">✓ Call today 2pm</div>
-  </div>
-  <div class="partner-card">
-    <div class="partner-name">Boston Business Journal</div>
-    <div class="partner-meta">Media Partner · PCP coverage</div>
-    <div class="partner-last last-ok">✓ Contacted 4 days ago</div>
-  </div>
-  <div class="partner-card">
-    <div class="partner-name">Nexus Financial</div>
-    <div class="partner-meta">Sponsor · PCP Gold tier</div>
-    <div class="partner-last last-warn">⚡ 8 days — check-in drafted</div>
-  </div>
-  <div class="partner-card">
-    <div class="partner-name">TechBoston Hub</div>
-    <div class="partner-meta">Community Partner</div>
-    <div class="partner-last last-late">⚠️ 14 days — reactivation drafted</div>
-  </div>
+<div class="small-grid">
+  <div class="small-card"><div class="sc-name">Elevate Wellness</div><div class="sc-meta">Event Partner · Jun 12</div><div class="sc-status ok">✓ Call today 2pm</div></div>
+  <div class="small-card"><div class="sc-name">Boston Business Journal</div><div class="sc-meta">Media · PCP coverage</div><div class="sc-status ok">✓ 4 days ago</div></div>
+  <div class="small-card"><div class="sc-name">Nexus Financial</div><div class="sc-meta">Sponsor · Gold tier</div><div class="sc-status warn">⚡ 8 days — check-in drafted</div></div>
+  <div class="small-card"><div class="sc-name">TechBoston Hub</div><div class="sc-meta">Community Partner</div><div class="sc-status late">⚠️ 14 days — reactivation drafted</div></div>
 </div>
 
-<p class="updated">Dashboard powered by BuiltByKlaw · builtbyklaw.com · Updated 7:00am daily by AI</p>
-
+<p class="updated">Powered by BuiltByKlaw · builtbyklaw.com · Updated 7:00am daily · Your network never goes cold. Your follow-up never slips.</p>
 </body>
 </html>
