@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Fulmer — BuiltByKlaw Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; padding: 20px; }
+  h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+  .brief-box { background: #1a1d27; border-radius: 12px; padding: 18px; margin-bottom: 24px; border-left: 3px solid #f4845f; }
+  .brief-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #f4845f; margin-bottom: 10px; }
+  .brief-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; font-size: 13px; color: #ccc; }
+  .brief-icon { font-size: 14px; flex-shrink: 0; }
+  .alert-box { background: #2a1a0f; border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; border: 1px solid #e76f51; }
+  .alert-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #e76f51; margin-bottom: 8px; }
+  .alert-item { display: flex; gap: 8px; align-items: center; font-size: 13px; color: #e9a88f; margin-bottom: 6px; }
+  .section-header { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 12px; margin-top: 28px; }
+  .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .goal-card { background: #1a1d27; border-radius: 10px; padding: 14px 16px; border-left: 3px solid #2d6a4f; }
+  .goal-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .goal-value { font-size: 24px; font-weight: 700; color: #fff; }
+  .goal-sub { font-size: 11px; color: #555; margin-top: 3px; }
+  .progress-bar { background: #2a2d3a; border-radius: 4px; height: 4px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; background: #52b788; }
+  .job-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .job-card { background: #1a1d27; border-radius: 12px; padding: 18px; border-top: 3px solid #444; }
+  .job-card.green { border-top-color: #52b788; }
+  .job-card.yellow { border-top-color: #e9c46a; }
+  .job-card.orange { border-top-color: #f4845f; }
+  .job-card.red { border-top-color: #e76f51; }
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .job-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .job-type { font-size: 11px; color: #666; margin-top: 2px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+  .badge-green { background: #1b4332; color: #52b788; }
+  .badge-yellow { background: #3d2c00; color: #e9c46a; }
+  .badge-orange { background: #3d2010; color: #f4845f; }
+  .badge-red { background: #3d1a0f; color: #e76f51; }
+  .milestones { margin-bottom: 10px; }
+  .milestone { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-done { background: #52b788; }
+  .dot-pending { background: #e9c46a; }
+  .dot-alert { background: #e76f51; }
+  .dot-na { background: #333; }
+  .milestone-label { color: #999; }
+  .milestone-label.done { color: #52b788; text-decoration: line-through; }
+  .next-action { background: #12151f; border-left: 2px solid #f4845f; padding: 8px 10px; border-radius: 4px; font-size: 12px; color: #f4845f; margin-top: 8px; }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .cert-card { background: #1a1d27; border-radius: 10px; padding: 14px; }
+  .cert-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+  .cert-client { font-size: 11px; color: #666; margin-bottom: 8px; }
+  .cert-exp { font-size: 12px; font-weight: 600; }
+  .exp-ok { color: #52b788; }
+  .exp-warn { color: #e9c46a; }
+  .exp-urgent { color: #e76f51; }
+  .updated { font-size: 11px; color: #444; text-align: right; margin-top: 24px; }
+  .ai-tag { display: inline-block; background: #2d1a0f; color: #f4845f; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+<h1>🔥 Fulmer Fire & Alarm Dashboard</h1>
+<p class="subtitle">Ryan Fulmer · Fire Suppression & Alarm · Powered by BuiltByKlaw <span class="ai-tag">AI ACTIVE</span></p>
+
+<!-- ALERT BOX -->
+<div class="alert-box">
+  <div class="alert-title">🚨 Immediate Attention Required</div>
+  <div class="alert-item">⚡ Additional insured request received — Keller Williams Marblehead — draft response ready</div>
+  <div class="alert-item">📄 Bind order received 7:42am — Coastal Property Group — acknowledgment drafted</div>
+</div>
+
+<!-- MORNING BRIEF -->
+<div class="brief-box">
+  <div class="brief-title">☀️ Morning Brief — Monday Apr 28</div>
+  <div class="brief-row"><span class="brief-icon">🔧</span>6 active jobs — 2 completing this week</div>
+  <div class="brief-row"><span class="brief-icon">📋</span>Harborview inspection: work order drafted and ready</div>
+  <div class="brief-row"><span class="brief-icon">⚠️</span>Coastal Commercial cert expires in 18 days — renewal notice drafted</div>
+  <div class="brief-row"><span class="brief-icon">✅</span>Northside Retail: inspection complete, report filed automatically</div>
+  <div class="brief-row"><span class="brief-icon">🔴</span>2 urgent items flagged above — AI drafted responses awaiting your approval</div>
+</div>
+
+<!-- METRICS -->
+<div class="section-header">Operations Overview</div>
+<div class="goals-grid">
+  <div class="goal-card">
+    <div class="goal-label">Active Jobs</div>
+    <div class="goal-value">6</div>
+    <div class="goal-sub">2 completing this week</div>
+    <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+  </div>
+  <div class="goal-card" style="border-left-color:#e9c46a">
+    <div class="goal-label">Certs Expiring</div>
+    <div class="goal-value">3</div>
+    <div class="goal-sub">Next 60 days</div>
+    <div class="progress-bar"><div class="progress-fill" style="background:#e9c46a;width:100%"></div></div>
+  </div>
+  <div class="goal-card" style="border-left-color:#e76f51">
+    <div class="goal-label">Urgent Items</div>
+    <div class="goal-value">2</div>
+    <div class="goal-sub">AI drafted — review needed</div>
+    <div class="progress-bar"><div class="progress-fill" style="background:#e76f51;width:100%"></div></div>
+  </div>
+  <div class="goal-card" style="border-left-color:#48cae4">
+    <div class="goal-label">Jobs Closed — YTD</div>
+    <div class="goal-value">31</div>
+    <div class="goal-sub">On pace</div>
+    <div class="progress-bar"><div class="progress-fill" style="background:#48cae4;width:65%"></div></div>
+  </div>
+</div>
+
+<!-- ACTIVE JOBS -->
+<div class="section-header">Active Jobs</div>
+<div class="job-grid">
+
+  <div class="job-card green">
+    <div class="job-header">
+      <div><div class="job-name">Northside Retail Plaza</div><div class="job-type">Annual Inspection · $4,200</div></div>
+      <span class="badge badge-green">Complete</span>
+    </div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Inspection complete</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Report filed — AI drafted</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Invoice — ready to send</span></div>
+    </div>
+    <div class="next-action">Invoice drafted and ready for your approval</div>
+  </div>
+
+  <div class="job-card yellow">
+    <div class="job-header">
+      <div><div class="job-name">Harborview Medical</div><div class="job-type">Suppression System Service · $8,500</div></div>
+      <span class="badge badge-yellow">Scheduled</span>
+    </div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Agreement signed</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Service date: May 1 — crew assigned</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Completion report</span></div>
+    </div>
+    <div class="next-action">Work order drafted — ready to send to crew</div>
+  </div>
+
+  <div class="job-card orange">
+    <div class="job-header">
+      <div><div class="job-name">Coastal Property Group</div><div class="job-type">New Install · $22,000</div></div>
+      <span class="badge badge-orange">Bind Received</span>
+    </div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Quote approved</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Bind order received 7:42am</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Agreement execution — draft ready</span></div>
+    </div>
+    <div class="next-action">🚨 Bind acknowledgment drafted — needs your approval</div>
+  </div>
+
+  <div class="job-card red">
+    <div class="job-header">
+      <div><div class="job-name">Keller Williams Marblehead</div><div class="job-type">Inspection · $2,800</div></div>
+      <span class="badge badge-red">AI Request</span>
+    </div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Inspection scheduled</span></div>
+      <div class="milestone"><div class="dot dot-alert"></div><span class="milestone-label" style="color:#e76f51">Additional insured request — flagged by AI</span></div>
+    </div>
+    <div class="next-action">🚨 AI response drafted — awaiting your approval</div>
+  </div>
+
+</div>
+
+<!-- CERTIFICATES -->
+<div class="section-header">Certificate Tracker</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-name">General Liability — Main Policy</div>
+    <div class="cert-client">All active jobs</div>
+    <div class="cert-exp exp-ok">✓ Expires Dec 15, 2026 — 231 days</div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-name">Workers Comp</div>
+    <div class="cert-client">All employees</div>
+    <div class="cert-exp exp-ok">✓ Expires Sep 1, 2026 — 126 days</div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-name">Coastal Property COI</div>
+    <div class="cert-client">Coastal Property Group</div>
+    <div class="cert-exp exp-warn">⚡ Expires May 16, 2026 — 18 days · Renewal drafted</div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-name">Harborview Additional Insured</div>
+    <div class="cert-client">Harborview Medical</div>
+    <div class="cert-exp exp-warn">⚡ Expires Jun 1, 2026 — 34 days</div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-name">Umbrella Policy</div>
+    <div class="cert-client">All jobs over $10K</div>
+    <div class="cert-exp exp-urgent">⚠️ Expires May 3, 2026 — 5 days · RENEW NOW</div>
+  </div>
+</div>
+
+<p class="updated">Dashboard powered by BuiltByKlaw · builtbyklaw.com · Updated 7:00am daily by AI</p>
+
+</body>
+</html>

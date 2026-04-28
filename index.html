@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doug Santos — BuiltByKlaw Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; padding: 20px; }
+  h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+  .brief-box { background: #1a1d27; border-radius: 12px; padding: 18px; margin-bottom: 24px; border-left: 3px solid #48cae4; }
+  .brief-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #48cae4; margin-bottom: 10px; }
+  .brief-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; font-size: 13px; color: #ccc; }
+  .brief-icon { font-size: 14px; flex-shrink: 0; }
+  .section-header { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 12px; margin-top: 28px; }
+  .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .goal-card { background: #1a1d27; border-radius: 10px; padding: 14px 16px; border-left: 3px solid #2d6a4f; }
+  .goal-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .goal-value { font-size: 24px; font-weight: 700; color: #fff; }
+  .goal-sub { font-size: 11px; color: #555; margin-top: 3px; }
+  .progress-bar { background: #2a2d3a; border-radius: 4px; height: 4px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; background: #52b788; }
+  .progress-fill.blue { background: #48cae4; }
+  .loan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .loan-card { background: #1a1d27; border-radius: 12px; padding: 18px; border-top: 3px solid #444; }
+  .loan-card.green { border-top-color: #52b788; }
+  .loan-card.yellow { border-top-color: #e9c46a; }
+  .loan-card.blue { border-top-color: #48cae4; }
+  .loan-card.red { border-top-color: #e76f51; }
+  .loan-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .loan-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .loan-type { font-size: 11px; color: #666; margin-top: 2px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+  .badge-green { background: #1b4332; color: #52b788; }
+  .badge-yellow { background: #3d2c00; color: #e9c46a; }
+  .badge-blue { background: #1b3a4b; color: #48cae4; }
+  .badge-red { background: #3d1a0f; color: #e76f51; }
+  .loan-detail { font-size: 12px; color: #888; margin-bottom: 12px; }
+  .milestones { margin-bottom: 10px; }
+  .milestone { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-done { background: #52b788; }
+  .dot-pending { background: #e9c46a; }
+  .dot-waiting { background: #48cae4; }
+  .dot-na { background: #333; }
+  .milestone-label { color: #999; }
+  .milestone-label.done { color: #52b788; text-decoration: line-through; }
+  .next-action { background: #12151f; border-left: 2px solid #48cae4; padding: 8px 10px; border-radius: 4px; font-size: 12px; color: #48cae4; margin-top: 8px; }
+  .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .partner-card { background: #1a1d27; border-radius: 10px; padding: 14px; }
+  .partner-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+  .partner-meta { font-size: 11px; color: #666; margin-bottom: 8px; }
+  .partner-last { font-size: 11px; }
+  .last-ok { color: #52b788; }
+  .last-warn { color: #e9c46a; }
+  .last-late { color: #e76f51; }
+  .updated { font-size: 11px; color: #444; text-align: right; margin-top: 24px; }
+  .ai-tag { display: inline-block; background: #1b3a4b; color: #48cae4; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<h1>🏦 Santos Team Dashboard</h1>
+<p class="subtitle">Doug Santos · North Point Realty · Powered by BuiltByKlaw <span class="ai-tag">AI ACTIVE</span></p>
+
+<!-- MORNING BRIEF -->
+<div class="brief-box">
+  <div class="brief-title">☀️ Morning Brief — Monday Apr 28</div>
+  <div class="brief-row"><span class="brief-icon">📋</span>4 active loans in pipeline — 1 closing this week</div>
+  <div class="brief-row"><span class="brief-icon">📞</span>3 referral partners haven't heard from you in 7+ days — follow-ups drafted and ready</div>
+  <div class="brief-row"><span class="brief-icon">⚠️</span>Johnson file: bank statements still outstanding — reminder drafted</div>
+  <div class="brief-row"><span class="brief-icon">✅</span>Martinez conditional approval issued yesterday — buyer follow-up sent automatically</div>
+  <div class="brief-row"><span class="brief-icon">📅</span>Call with Ryan Fulmer 1pm · Doug Santos close call 4pm</div>
+</div>
+
+<!-- GOALS -->
+<div class="section-header">Pipeline Metrics</div>
+<div class="goals-grid">
+  <div class="goal-card">
+    <div class="goal-label">Loans Closed — YTD</div>
+    <div class="goal-value">14</div>
+    <div class="goal-sub">Target: 60 / year</div>
+    <div class="progress-bar"><div class="progress-fill" style="width:23%"></div></div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-label">Volume — YTD</div>
+    <div class="goal-value">$4.2M</div>
+    <div class="goal-sub">Target: $18M</div>
+    <div class="progress-bar"><div class="progress-fill" style="width:23%"></div></div>
+  </div>
+  <div class="goal-card" style="border-left-color:#48cae4">
+    <div class="goal-label">Active Pipeline</div>
+    <div class="goal-value">4</div>
+    <div class="goal-sub">$1.8M in process</div>
+    <div class="progress-bar"><div class="progress-fill blue" style="width:100%"></div></div>
+  </div>
+  <div class="goal-card" style="border-left-color:#e9c46a">
+    <div class="goal-label">Referral Partners</div>
+    <div class="goal-value">12</div>
+    <div class="goal-sub">3 need touchpoint</div>
+    <div class="progress-bar"><div class="progress-fill" style="background:#e9c46a;width:75%"></div></div>
+  </div>
+</div>
+
+<!-- ACTIVE LOANS -->
+<div class="section-header">Active Loans</div>
+<div class="loan-grid">
+
+  <div class="loan-card green">
+    <div class="loan-header">
+      <div><div class="loan-name">Martinez, Carlos</div><div class="loan-type">Conventional · $485K · Purchase</div></div>
+      <span class="badge badge-green">Approved</span>
+    </div>
+    <div class="loan-detail">Closing: May 2 · Referring agent: Sarah Chen · CrossCountry</div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Application submitted</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Conditional approval issued</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Final conditions — 2 remaining</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Clear to close</span></div>
+    </div>
+    <div class="next-action">AI drafted: buyer update sent 8:02am · Agent update ready to review</div>
+  </div>
+
+  <div class="loan-card yellow">
+    <div class="loan-header">
+      <div><div class="loan-name">Johnson, Patricia</div><div class="loan-type">FHA · $320K · Purchase</div></div>
+      <span class="badge badge-yellow">Docs Pending</span>
+    </div>
+    <div class="loan-detail">Est. closing: May 15 · Referring agent: Mike Torres</div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Application submitted</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Appraisal ordered</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">Bank statements — 2 months outstanding</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Underwriting</span></div>
+    </div>
+    <div class="next-action" style="border-color:#e9c46a;color:#e9c46a">AI reminder drafted — awaiting your approval to send</div>
+  </div>
+
+  <div class="loan-card blue">
+    <div class="loan-header">
+      <div><div class="loan-name">Reyes, Amanda & David</div><div class="loan-type">Jumbo · $890K · Refinance</div></div>
+      <span class="badge badge-blue">In Underwriting</span>
+    </div>
+    <div class="loan-detail">Est. closing: May 22 · Self-referred · repeat client</div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Application submitted</span></div>
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">All docs received</span></div>
+      <div class="milestone"><div class="dot dot-waiting"></div><span class="milestone-label">Underwriting — day 5 of 10</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Approval</span></div>
+    </div>
+    <div class="next-action">Status update drafted for Reyes — ready to send</div>
+  </div>
+
+  <div class="loan-card red">
+    <div class="loan-header">
+      <div><div class="loan-name">Thompson, Kevin</div><div class="loan-type">VA · $410K · Purchase</div></div>
+      <span class="badge badge-red">Stalled</span>
+    </div>
+    <div class="loan-detail">Last contact: 9 days ago · Referring agent: Lisa Park</div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot dot-done"></div><span class="milestone-label done">Pre-approval issued</span></div>
+      <div class="milestone"><div class="dot dot-pending"></div><span class="milestone-label">COE verification — not received</span></div>
+      <div class="milestone"><div class="dot dot-na"></div><span class="milestone-label" style="color:#555">Application</span></div>
+    </div>
+    <div class="next-action" style="border-color:#e76f51;color:#e76f51">⚠️ 9 days no contact — follow-up drafted, needs your review</div>
+  </div>
+
+</div>
+
+<!-- REFERRAL PARTNERS -->
+<div class="section-header">Referral Partners</div>
+<div class="partner-grid">
+  <div class="partner-card">
+    <div class="partner-name">Sarah Chen</div>
+    <div class="partner-meta">RE Agent · Coldwell Banker · 3 referrals YTD</div>
+    <div class="partner-last last-ok">✓ Contacted 3 days ago</div>
+  </div>
+  <div class="partner-card">
+    <div class="partner-name">Mike Torres</div>
+    <div class="partner-meta">RE Agent · North Point · 2 referrals YTD</div>
+    <div class="partner-last last-warn">⚡ 7 days — check-in drafted</div>
+  </div>
+  <div class="partner-card">
+    <div class="partner-name">Lisa Park</div>
+    <div class="partner-meta">RE Agent · Compass · 1 referral YTD</div>
+    <div class="partner-last last-late">⚠️ 11 days — follow-up ready</div>
+  </div>
+  <div class="partner-card">
+    <div class="partner-name">James Wu</div>
+    <div class="partner-meta">Financial Advisor · 1 referral YTD</div>
+    <div class="partner-last last-late">⚠️ 14 days — reactivation drafted</div>
+  </div>
+</div>
+
+<p class="updated">Dashboard powered by BuiltByKlaw · builtbyklaw.com · Updated 7:00am daily by AI</p>
+
+</body>
+</html>
